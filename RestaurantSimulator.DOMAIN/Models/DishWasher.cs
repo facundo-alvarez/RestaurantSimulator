@@ -1,11 +1,6 @@
-﻿using RestaurantSimulator.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RestaurantSimulator.DOMAIN.Interfaces;
 
-namespace RestaurantSimulator.Models
+namespace RestaurantSimulator.DOMAIN.Models
 {
     public class DishWasher : Worker, IClean
     {

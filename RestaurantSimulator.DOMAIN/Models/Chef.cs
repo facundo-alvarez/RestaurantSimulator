@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RestaurantSimulator.Models
+﻿namespace RestaurantSimulator.DOMAIN.Models
 {
-    sealed class Chef : Worker
+    public class Chef : Worker
     {
         public int PlatesSupervised { get; set; }
 

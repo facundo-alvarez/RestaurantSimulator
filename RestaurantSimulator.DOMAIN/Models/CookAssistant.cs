@@ -1,13 +1,8 @@
-﻿using RestaurantSimulator.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using RestaurantSimulator.DOMAIN.Interfaces;
 
-namespace RestaurantSimulator.Models
+namespace RestaurantSimulator.DOMAIN.Models
 {
-    sealed class CookAssistant : Worker, IPrepare
+    public class CookAssistant : Worker, IPrepare
     {
         public CookAssistant(int id, string name, DateOnly birthDate, DateOnly hiredDate, int salary, int workHours) : base(id, name, birthDate, hiredDate, salary, workHours)
         {

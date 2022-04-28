@@ -1,4 +1,4 @@
-﻿namespace RestaurantSimulator.Models
+﻿namespace RestaurantSimulator.DOMAIN.Models
 {
     public class Food
     {
