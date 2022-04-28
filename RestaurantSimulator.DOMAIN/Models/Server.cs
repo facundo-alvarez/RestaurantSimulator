@@ -2,13 +2,12 @@
 
 namespace RestaurantSimulator.DOMAIN.Models
 {
-    public class Server : Worker, IClean, IPrepare
+    public class Server : Worker, IClean
     {
         public Server(int id, string name, DateOnly birthDate, DateOnly hiredDate, int salary, int workHours) : base(id, name, birthDate, hiredDate, salary, workHours)
         {
         }
 
-        public int TablesServed { get; set; }
         public int Rating { get; set; }
 
         public void Clean()
@@ -16,9 +15,22 @@ namespace RestaurantSimulator.DOMAIN.Models
             throw new NotImplementedException();
         }
 
-        public void Prepare()
+        public bool CheckOrder(int table)
         {
-            throw new NotImplementedException();
+            if (KitchenCounter.ordersReady.Count != 0)
+            {
+                var isReady = KitchenCounter.ordersReady.First().TableId == table;
+                return isReady;
+            }
+            return false;
+
+        }
+
+        public void ServePlate(int table)
+        {
+            Order order = KitchenCounter.ordersReady.Where(x => x.TableId == table).Single();
+            KitchenCounter.ordersReady.Remove(order);
+            Console.WriteLine($"Taking food to the table {table}");
         }
     }
 }

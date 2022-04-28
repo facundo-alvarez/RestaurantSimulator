@@ -4,18 +4,38 @@
     {
         public Receptionist(int id, string name, DateOnly birthDate, DateOnly hiredDate, int salary, int workHours) : base(id, name, birthDate, hiredDate, salary, workHours)
         {
+
         }
 
-        public void AssignTable(Client client, TablesBook tablesBook)
+        public void AssignTable(WaitingLine waitingLine, TablesBook tablesBook)
         {
-            foreach (DinnerTable dinnerTable in tablesBook.DinnerTables)
+            foreach (var client in waitingLine.ClientsWaiting)
             {
-                if (!dinnerTable.IsClean || !dinnerTable.IsOccupied)
-                    continue;
-                else
-                    dinnerTable.IdOfClient = client.Id;
-                    break;
+                foreach (var table in tablesBook.DinnerTables)
+                {
+                    if ((client.NumberOfPeople <= table.NumberOfChairs) && table.IsClean && !table.IsOccupied)
+                    {
+                        table.IdOfClient = client.Id;
+                        table.IsOccupied = true;
+                        waitingLine.RemoveClient(client);
+                        return;
+                    }
+                }
             }
+        }
+
+        public int CheckTableAvailble(Client client, TablesBook tablesBook)
+        {
+            foreach (var table in tablesBook.DinnerTables)
+            {
+                if ((client.NumberOfPeople <= table.NumberOfChairs) && table.IsClean && !table.IsOccupied)
+                {
+                    table.IdOfClient = client.Id;
+                    table.IsOccupied = true;
+                    return table.Id;
+                }
+            }
+            return 0;
         }
     }
 }

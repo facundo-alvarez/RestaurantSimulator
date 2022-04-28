@@ -5,15 +5,15 @@
         public int Id { get; set; }
         public int NumberOfPeople { get; set; }
 
-        public void Order()
+        public Client(int id, int numb)
         {
-
+            Id = id;
+            NumberOfPeople = numb;
         }
 
-        public void Eat()
-        {
+        public Food Order(Menu menuList, int item) => menuList.FoodMenu[item];
 
-        }
+        public void Eat() => Console.WriteLine("Eating");
 
         public void AskCheck()
         {
