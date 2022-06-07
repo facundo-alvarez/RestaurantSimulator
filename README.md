@@ -1,7 +1,7 @@
 # Restaurant Simulator
 
-Objective:
-Mini simulation "game" about a restaurant and the ordering process. From wait in line to ordering the dish, simulating the waiting process.
+Goals:
+- Mini simulation "game" about a restaurant and the ordering process. From wait in line to ordering the dish, simulating the waiting process.
 
 Instruments:
 - Models that implement some OOP principles.
